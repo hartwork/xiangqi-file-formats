@@ -450,10 +450,9 @@ def process_file(filename):
 
     print('%d single moves in total' % moves_total)
     for i in range(moves_total):
-        decoder = struct.Struct('BBBBB14sB')
-        from_field, z1, to_field, z2, piece_beaten_code, unknown, z4 = decoder.unpack(content[offset:offset + decoder.size])
-
-        for zero in (z1, z2, z4):
+        decoder = struct.Struct('BBBBB15s')
+        from_field, z1, to_field, z2, piece_beaten_code, unknown = decoder.unpack(content[offset:offset + decoder.size])
+        for zero in (z1, z2):
             if zero != 0:
                 raise ValueError('Unexpected non-zero data in move %d: %s' % (i + 1, zero))
 

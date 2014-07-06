@@ -96,8 +96,7 @@ count  value
 1      To field ID
 1      0  // ???
 1      Beaten piece code (1 to 32, 0 if none)
-14     ???
-1      0  // ???
+15     ???
 -----------------------------
 .. more moves ..
 -----------------------------
