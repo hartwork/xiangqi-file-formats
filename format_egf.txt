@@ -1,0 +1,113 @@
+EGF = Xie Xie Extended Binary Format
+
+Copyright (C) 2014 Sebastian Pipping <sebastian@pipping.org>
+License under Creative Commons Attribution 4.0 International
+
+
+count  value
+-----------------------------
+1      7
+1      13
+-----------------------------
+1      1
+1      0 <= len(event_name) <= 177
+...    event_name
+-----------------------------
+1      2
+1      0 <= len(event_site) <= 177
+...    event_site
+-----------------------------
+1      3
+1      0 <= len(date_str) <= 177
+...    date_str
+-----------------------------
+1      4
+1      0 <= len(round_str) <= 255 ???
+...    round_str
+-----------------------------
+1      5
+1      0 <= len(player_red_name) <= 177
+...    player_red_name
+-----------------------------
+1      6
+1      0 <= len(player_red_elo) <= 255 ???
+...    player_red_elo
+-----------------------------
+1      7
+1      0 <= len(player_black_name) <= 177
+...    player_black_name
+-----------------------------
+1      8
+1      0 <= len(player_black_elo) <= 177
+...    player_black_elo
+-----------------------------
+1      9
+4      0 0 0 0  // ???
+-----------------------------
+1      10
+1      result (star -> 0, 1:0 -> 1, 0:1 -> 2, draw -> 3)
+-----------------------------
+1      11
+1      0 <= low(len(game_description)) <= 255
+1      0 <= high(len(game_description)) <= 255
+...    game_description
+-----------------------------
+1      12
+1      0 <= low(len(author)) <= 255
+1      0 <= high(len(author)) <= 255
+-----------------------------
+1      13
+1      0 <= low(len(time_measurement)) <= 255
+1      0 <= high(len(time_measurement)) <= 255
+...    time_measurement
+-----------------------------
+1      1  // ???
+34     34 x 0  // ???
+-----------------------------
+10     Fields i9 to i0
+6      6 x 0
+10     Fields h9 to h0
+6      6 x 0
+[..]
+10     Fields a9 to a0
+-----------------------------
+36     36 x 0  // ???
+1      ???
+-----------------------------
+36     Red base row (red king, red left advisor, red right advisor, red left elephant, ..)
+8      Red cannon row (0 0 0 x 0 0 0 x)
+20     Red soldier row (0 0 0 x 0 0 0 x 0 0 0 x 0 0 0 x 0 0 0 x)
+36     Black base row (0 0 0 x 0 0 0 x ..)
+8      Black cannon row
+20     Black soldier row
+-----------------------------
+3      3 x 0  // ???
+-----------------------------
+1      Side to start (red -> 0, black -> 1)
+-----------------------------
+3      0 0 0  // ???
+1      moves done
+3      0 0 0  // ???
+1      moves total
+3      0 0 0  // ???
+-----------------------------
+1      From field ID
+1      0  // ???
+1      To field ID
+1      0  // ???
+1      Beaten piece code (1 to 32, 0 if none)
+14     ???
+1      0  // ???
+-----------------------------
+.. more moves ..
+-----------------------------
+1      Comment count
+1      0  // ???
+1      0  // ???
+-----------------------------
+1      0 <= low(len(comment)) <= 255
+1      0 <= high(len(comment)) <= 255
+...    comment
+0/1    0  // present unless last comment
+-----------------------------
+.. more comments ..
